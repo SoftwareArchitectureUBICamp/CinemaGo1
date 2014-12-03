@@ -92,22 +92,10 @@ public class MainClass {
 		
 		schedule.sort();
 		System.out.println("\nSorted schedule list:");		
-		for (int i=0; i < schedule.getSessions().size(); i++){
-			System.out.print("[" + schedule.getSessions().get(i).getCinema().getCinemaName() + "] ");
-			System.out.print("'" + schedule.getSessions().get(i).getMovie().getMovieTitle() + "': ");
-			System.out.print("date: " + schedule.getSessions().get(i).getStartTime().toLocalDate());
-			System.out.print("; time: " + schedule.getSessions().get(i).getStartTime().toLocalTime());
-			System.out.print("-" + schedule.getSessions().get(i).getEndTime().toLocalTime());
-			System.out.println(" (duration=" + schedule.getSessions().get(i).getMovie().getDuration().toMinutes() + ")");
-
-		}
+		schedule.getSessions().stream().forEach(s -> System.out.println(s));
 		
 		System.out.println("\nUpcomming movies:");		
-		
-		List<Session> active = schedule.getActiveSessions();
-		
-		active.stream().forEach(s -> System.out.println("Movie: " + s.getMovie().getMovieTitle() + " time: " + s.getStartTime()));
-		
+		schedule.getActiveSessions().stream().forEach(s -> System.out.println(s));
 		
 		/*** SALES ***/
 		System.out.println("\n\n*** SALES ***\n");

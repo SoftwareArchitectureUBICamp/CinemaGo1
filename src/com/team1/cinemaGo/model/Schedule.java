@@ -67,7 +67,6 @@ public class Schedule {
 			}
 		}
 		
-		
 		return canInsert;
 
 	}

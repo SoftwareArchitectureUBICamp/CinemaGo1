@@ -59,8 +59,7 @@ public class Session {
 
 	@Override
 	public String toString() {
-		return "Session [startTime=" + startTime + ", movie=" + movie.getMovieTitle()
-				+ ", cinema=" + cinema.getCinemaName() + ", sessionType=" + sessionType + "]";
+		return "[" + cinema.getCinemaName() + "] '" + movie.getMovieTitle()+ "': date: " + startTime.toLocalDate() + "; time: " + startTime.toLocalTime() + "-" + this.getEndTime().toLocalTime() + " (duration=" + movie.getDuration().toMinutes() + "min)";
 	}
 	
 }
