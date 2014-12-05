@@ -1,16 +1,44 @@
 package com.team1.cinemaGo.model;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+
+@Entity
+@Table(name="t_session",
+       uniqueConstraints = {@UniqueConstraint(columnNames = {"start_time", "cinema_id"})})
 public class Session {
 
+	@Id
+	@Column(name="session_id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
+
+	@Column(name="start_time")
 	private LocalDateTime startTime;
+	
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="movie_id")
 	private Movie movie;
+
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="cinema_id")
 	private Cinema cinema;
-	private int sessionType;
-	private BigDecimal price;
+
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="session_type_id")
+	private SessionType sessionType;
 		
 	public Cinema getCinema() {
 		return cinema;
@@ -34,21 +62,24 @@ public class Session {
 	public LocalDateTime getEndTime() {
 		return this.startTime.plusMinutes(this.movie.getDuration().toMinutes());
 	}
-		
-	public int getSessionType() {
+	
+	
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public SessionType getSessionType() {
 		return sessionType;
 	}
-	public void setSessionType(int sessionType) {
+	public void setSessionType(SessionType sessionType) {
 		this.sessionType = sessionType;
 	}
-	public BigDecimal getPrice() {
-		return price;
-	}
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
 
-	
+
+
 	//Comparators for sort method
 	public static class Comparators {
 	    public static final Comparator<Session> DATE = (Session o1, Session o2) -> o1.startTime.compareTo(o2.startTime);

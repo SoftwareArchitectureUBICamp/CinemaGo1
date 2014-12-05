@@ -33,7 +33,6 @@ public class CinemaDAOImpl implements CinemaDAO {
 //	    logger.info("Cinema updated successfully, Cinema Details="+cinema);
 	}
 
-
 	@Override
 	public List<Cinema> listCinema() {
         Session session = this.sessionFactory.getCurrentSession();

@@ -34,12 +34,13 @@ public class MainClass {
 		Cinema cinema2 = new Cinema();
 		
 		cinema1.setCinemaName("Cinema1");
-		cinema1.setSeatsNumber(50);
+		cinema1.setRowsCount(8);
+		cinema1.setColumnsCount(12);
 		
 		cinema2.setCinemaName("Cinema2");
-		cinema2.setSeatsNumber(40);
+		cinema2.setRowsCount(10);
+		cinema2.setColumnsCount(10);
 
-		
 		Movie movie1 = new Movie();
 		Movie movie2 = new Movie();
 				
@@ -128,11 +129,7 @@ public class MainClass {
 		order1.setOrderDate(LocalDateTime.now());
 		
 		System.out.println(order1.toString());
-		
-		
-/*		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-		Session session = (Session) sessionFactory.openSession();
-		((SessionFactory) session).close();*/
+	
 		
 	}
 
