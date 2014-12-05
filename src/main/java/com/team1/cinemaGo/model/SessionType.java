@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="t_session")
+@Table(name="t_session_type")
 public class SessionType {
 
 	@Id
