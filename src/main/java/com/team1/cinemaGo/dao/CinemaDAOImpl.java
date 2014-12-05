@@ -38,9 +38,9 @@ public class CinemaDAOImpl implements CinemaDAO {
         Session session = this.sessionFactory.getCurrentSession();
         @SuppressWarnings("unchecked")
         List<Cinema> cinemasList = session.createQuery("from Cinema").list();
-        for(Cinema cinema : cinemasList){
+//        for(Cinema cinema : cinemasList){
 //            logger.info("Cinemas List::"+cinema);
-        }
+//        }
         return cinemasList;
     }
 

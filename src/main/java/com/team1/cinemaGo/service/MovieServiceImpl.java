@@ -6,7 +6,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.team1.cinemaGo.dao.CinemaDAO;
 import com.team1.cinemaGo.dao.MovieDAO;
 import com.team1.cinemaGo.model.Movie;
 

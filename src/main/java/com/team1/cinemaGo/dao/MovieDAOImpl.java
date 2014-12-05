@@ -34,9 +34,9 @@ public class MovieDAOImpl implements MovieDAO {
 		Session session = this.sessionFactory.getCurrentSession();
         @SuppressWarnings("unchecked")
         List<Movie> moviesList = session.createQuery("from movie").list();
-        for(Movie movie : moviesList){
-        	//logging
-        }
+//        for(Movie movie : moviesList){
+//        	//logging
+//        }
         return moviesList;		
 	}
 

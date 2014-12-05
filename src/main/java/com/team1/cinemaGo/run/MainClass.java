@@ -9,11 +9,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.team1.cinemaGo.model.Cinema;
 import com.team1.cinemaGo.model.Client;
 import com.team1.cinemaGo.model.Movie;
