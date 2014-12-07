@@ -1,6 +1,5 @@
 package com.team1.cinemaGo.model;
 
-import java.time.Duration;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +21,7 @@ public class Movie {
 	private String movieTitle;
 	
 	@Column(name="movie_duration")
-	private Duration duration;
+	private int duration;
 	
 	@Column(name="movie_description")
 	private String description;
@@ -43,10 +42,10 @@ public class Movie {
 	public void setMovieTitle(String movieTitle) {
 		this.movieTitle = movieTitle;
 	}
-	public Duration getDuration() {
+	public int getDuration() {
 		return duration;
 	}
-	public void setDuration(Duration duration) {
+	public void setDuration(int duration) {
 		this.duration = duration;
 	}
 	public String getDescription() {

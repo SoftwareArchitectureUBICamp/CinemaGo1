@@ -1,9 +1,11 @@
 package com.team1.cinemaGo.model;
 
+import com.team1.cinemaGo.run.LocalDateTimePersistenceConverter;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,6 +28,7 @@ public class Session {
 	private long id;
 
 	@Column(name="start_time")
+	@Convert(converter = LocalDateTimePersistenceConverter.class)
 	private LocalDateTime startTime;
 	
 	@OneToOne(fetch=FetchType.EAGER)
@@ -60,7 +63,7 @@ public class Session {
 	}
 	
 	public LocalDateTime getEndTime() {
-		return this.startTime.plusMinutes(this.movie.getDuration().toMinutes());
+		return this.startTime.plusMinutes(this.movie.getDuration());
 	}
 	
 	
@@ -90,7 +93,7 @@ public class Session {
 
 	@Override
 	public String toString() {
-		return "[" + cinema.getCinemaName() + "] '" + movie.getMovieTitle()+ "': date: " + startTime.toLocalDate() + "; time: " + startTime.toLocalTime() + "-" + this.getEndTime().toLocalTime() + " (duration=" + movie.getDuration().toMinutes() + "min)";
+		return "[" + cinema.getCinemaName() + "] '" + movie.getMovieTitle()+ "': date: " + startTime.toLocalDate() + "; time: " + startTime.toLocalTime() + "-" + this.getEndTime().toLocalTime() + " (duration=" + movie.getDuration() + "min)";
 	}
 	
 }

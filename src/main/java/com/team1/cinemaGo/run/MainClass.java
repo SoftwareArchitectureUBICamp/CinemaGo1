@@ -9,13 +9,19 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.Session;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import com.team1.cinemaGo.model.Cinema;
 import com.team1.cinemaGo.model.Client;
 import com.team1.cinemaGo.model.Movie;
 import com.team1.cinemaGo.model.Order;
 import com.team1.cinemaGo.model.OrderItem;
 import com.team1.cinemaGo.model.Schedule;
-import com.team1.cinemaGo.model.Session;
+import com.team1.cinemaGo.service.CinemaService;
 
 public class MainClass {
 
@@ -41,11 +47,11 @@ public class MainClass {
 				
 		movie1.setMovieTitle("El espíritu de la colmena");
 		movie1.setDescription("A sensitive seven-year-old girl living in 1940 in a small Spanish village is traumatized after viewing the movie 'Frankenstein' and drifts into her own fantasy world.");
-		movie1.setDuration(Duration.ofMinutes(97));
+		movie1.setDuration(97);
 
 		movie2.setMovieTitle("El verdugo");
 		movie2.setDescription("An undertaker gets married to an old executioner's daughter and, although he doesn't like it, must continue the profession of his father-in-law after his retirement");
-		movie2.setDuration(Duration.ofMinutes(87));
+		movie2.setDuration(87);
 
 		
 		List<Movie> movies = new ArrayList<Movie>(); 
@@ -53,11 +59,11 @@ public class MainClass {
 		movies.add(movie1);
 		movies.add(movie2);
 		
-		Session s1 = new Session();
-		Session s2 = new Session();
-		Session s3 = new Session();
-		Session s4 = new Session();
-		Session s5 = new Session();
+		com.team1.cinemaGo.model.Session s1 = new com.team1.cinemaGo.model.Session();
+		com.team1.cinemaGo.model.Session s2 = new com.team1.cinemaGo.model.Session();
+		com.team1.cinemaGo.model.Session s3 = new com.team1.cinemaGo.model.Session();
+		com.team1.cinemaGo.model.Session s4 = new com.team1.cinemaGo.model.Session();
+		com.team1.cinemaGo.model.Session s5 = new com.team1.cinemaGo.model.Session();
 
 		
 		DateTimeFormatter dateTimeStamp = DateTimeFormatter.ofPattern("dd.MM.uuuu HH:mm");
@@ -126,6 +132,14 @@ public class MainClass {
 		System.out.println(order1.toString());
 	
 		
+		Configuration configuration = new Configuration().configure();
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+        SessionFactory factory = configuration.buildSessionFactory(builder.build());	       
+        org.hibernate.Session session = factory.openSession();
+        session.beginTransaction();
+	    session.save(cinema1);
+	    session.getTransaction().commit();
+	    session.close();
 	}
 
 }
