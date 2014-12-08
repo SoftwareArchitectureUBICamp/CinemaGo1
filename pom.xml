@@ -64,6 +64,11 @@
 		    <artifactId>hibernate-entitymanager</artifactId>
 		    <version>4.3.7.Final</version>
 		</dependency>
+		<dependency>
+   			<groupId>org.hibernate</groupId>
+   			<artifactId>hibernate-validator</artifactId>
+   			<version>5.1.3.Final</version>
+		</dependency>
  
 <!-- PostgreSQL Connector Java dependency (JDBC driver for PostgreSQL) --> 
 		<dependency>
