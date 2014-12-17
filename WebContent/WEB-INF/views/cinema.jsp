@@ -9,5 +9,6 @@
 <body>
 ${cinema}
 <p>${listCinemas}</p>
+<p>${cinemaById}</p>
 </body>
 </html>
