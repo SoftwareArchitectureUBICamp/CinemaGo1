@@ -9,9 +9,9 @@ import java.util.stream.Collectors;
 
 public class Schedule {
 	
-	private List<Session> sessions = new ArrayList<Session>();
+	private List<MovieSession> sessions = new ArrayList<MovieSession>();
 	
-	public void add(Session session){
+	public void add(MovieSession session){
 		
 		if (insertControl(session)){
 			this.sessions.add(session);
@@ -29,7 +29,7 @@ public class Schedule {
 				
 	}
 	
-	public void set(int index, Session session) {
+	public void set(int index, MovieSession session) {
 		
 		if (insertControl(session)){
 			this.sessions.set(index, session);
@@ -42,20 +42,20 @@ public class Schedule {
 	
 	public void sort(){
 
-		Collections.sort(sessions, Session.Comparators.CINEMADATE);
+		Collections.sort(sessions, MovieSession.Comparators.CINEMADATE);
 
 	}
 	
-	private boolean insertControl(final Session session){
+	private boolean insertControl(final MovieSession session){
 
 		boolean canInsert = true;
-		List<Session> tmpsess = new ArrayList<Session>(sessions);
+		List<MovieSession> tmpsess = new ArrayList<MovieSession>(sessions);
 		
 		tmpsess.add(session);
-		Collections.sort(tmpsess, Session.Comparators.CINEMADATE);
+		Collections.sort(tmpsess, MovieSession.Comparators.CINEMADATE);
 
 		//Filter list by session's cinema
-		List<Session> sess = tmpsess.stream().filter(p -> p.getCinema().getCinemaName() == session.getCinema().getCinemaName()).collect(Collectors.toList());		
+		List<MovieSession> sess = tmpsess.stream().filter(p -> p.getCinema().getCinemaName() == session.getCinema().getCinemaName()).collect(Collectors.toList());		
 				
 		for (int i=0; i < sess.size()-1; i++){
 			
@@ -71,21 +71,21 @@ public class Schedule {
 
 	}
 
-	public List<Session> getSessions() {
+	public List<MovieSession> getSessions() {
 		return sessions;
 	}
 
-	public List<Session> getActiveSessions() {
+	public List<MovieSession> getActiveSessions() {
 		
 		LocalDateTime now = LocalDateTime.now();
-		List<Session> filteredSessions = new ArrayList<Session>();
+		List<MovieSession> filteredSessions = new ArrayList<MovieSession>();
 		
 		filteredSessions = sessions.stream().filter(s -> s.getStartTime().isAfter(now)).collect(Collectors.toList());
 		return filteredSessions;
 		
 	}
 	
-	public void setSessions(List<Session> sessions) {
+	public void setSessions(List<MovieSession> sessions) {
 		this.sessions = sessions;
 	}
 

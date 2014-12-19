@@ -1,27 +1,27 @@
 package com.team1.cinemaGo.run;
 
 import java.text.ParseException;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.Session;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.team1.cinemaGo.model.Cinema;
 import com.team1.cinemaGo.model.Client;
 import com.team1.cinemaGo.model.Movie;
+import com.team1.cinemaGo.model.MovieSession;
 import com.team1.cinemaGo.model.Order;
 import com.team1.cinemaGo.model.OrderItem;
 import com.team1.cinemaGo.model.Schedule;
-import com.team1.cinemaGo.service.CinemaService;
+import com.team1.cinemaGo.model.Seat;
+import com.team1.cinemaGo.model.SessionType;
 
 public class MainClass {
 
@@ -53,40 +53,45 @@ public class MainClass {
 		movie2.setDescription("An undertaker gets married to an old executioner's daughter and, although he doesn't like it, must continue the profession of his father-in-law after his retirement");
 		movie2.setDuration(87);
 
-		
 		List<Movie> movies = new ArrayList<Movie>(); 
 
 		movies.add(movie1);
 		movies.add(movie2);
 		
-		com.team1.cinemaGo.model.Session s1 = new com.team1.cinemaGo.model.Session();
-		com.team1.cinemaGo.model.Session s2 = new com.team1.cinemaGo.model.Session();
-		com.team1.cinemaGo.model.Session s3 = new com.team1.cinemaGo.model.Session();
-		com.team1.cinemaGo.model.Session s4 = new com.team1.cinemaGo.model.Session();
-		com.team1.cinemaGo.model.Session s5 = new com.team1.cinemaGo.model.Session();
-
 		
-		DateTimeFormatter dateTimeStamp = DateTimeFormatter.ofPattern("dd.MM.uuuu HH:mm");
+		SessionType sessType = new SessionType();
+		
+		
+		MovieSession s1 = new MovieSession();
+		MovieSession s2 = new MovieSession();
+		MovieSession s3 = new MovieSession();
+		MovieSession s4 = new MovieSession();
+		MovieSession s5 = new MovieSession();
+		
+		DateTimeFormatter dateTimeStamp = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm");
 		
 		s1.setCinema(cinema2);
 		s1.setMovie(movie1);
-		s1.setStartTime(LocalDateTime.parse("15.12.2014 12:00", dateTimeStamp));
+		s1.setSessionType(sessType);
+		s1.setStartTime(LocalDateTime.parse("2014-12-15 12:00", dateTimeStamp));
 		
 		s2.setCinema(cinema2);
 		s2.setMovie(movie2);
-		s2.setStartTime(LocalDateTime.parse("30.11.2014 22:30", dateTimeStamp));
+		s2.setSessionType(sessType);
+		s2.setStartTime(LocalDateTime.parse("2014-11-30 22:30", dateTimeStamp));
 
 		s3.setCinema(cinema1);
 		s3.setMovie(movie2);
-		s3.setStartTime(LocalDateTime.parse("01.12.2014 21:00", dateTimeStamp));
+		s3.setSessionType(sessType);
+		s3.setStartTime(LocalDateTime.parse("2014-12-01 21:00", dateTimeStamp));
 
 		s4.setCinema(cinema2);
 		s4.setMovie(movie2);
-		s4.setStartTime(LocalDateTime.parse("15.12.2014 08:30", dateTimeStamp));
+		s4.setStartTime(LocalDateTime.parse("2014-12-15 08:30", dateTimeStamp));
 
 		s5.setCinema(cinema2);
 		s5.setMovie(movie1);
-		s5.setStartTime(LocalDateTime.parse("15.12.2014 14:07", dateTimeStamp));
+		s5.setStartTime(LocalDateTime.parse("2014-12-15 14:07", dateTimeStamp));
 
 		
 		Schedule schedule = new Schedule();
@@ -130,6 +135,11 @@ public class MainClass {
 		order1.setOrderDate(LocalDateTime.now());
 		
 		System.out.println(order1.toString());
+		
+		
+		
+		/*** WORKING WITH DB ***/
+		System.out.println("\n\n*** SAVE TO AND READ FROM DB ***\n");
 	
 		
 		Configuration configuration = new Configuration().configure();
@@ -137,9 +147,49 @@ public class MainClass {
         SessionFactory factory = configuration.buildSessionFactory(builder.build());	       
         org.hibernate.Session session = factory.openSession();
         session.beginTransaction();
-	    session.save(cinema1);
-	    session.getTransaction().commit();
-	    session.close();
+        
+        session.persist(cinema1);
+        session.persist(cinema2);
+        
+        session.persist(movie1);
+        session.persist(movie2);
+        
+        session.persist(sessType);
+        
+        Set<Seat> seats = new HashSet<Seat>();       
+        seats.add(new Seat(1, 1));
+        seats.add(new Seat(4, 1));
+        seats.add(new Seat(5, 1));
+
+        
+        s1.setOccupiedSeats(seats);
+        s2.addOccupiedSeat(new Seat(5, 5));
+        s2.getOccupiedSeats().add(new Seat(s2, 1,16));
+        
+        session.persist(s1);
+        session.persist(s2);
+        session.persist(s3);
+        session.persist(s4);
+        session.persist(s5);
+                        
+        session.getTransaction().commit();        
+        
+
+        session.beginTransaction();
+        @SuppressWarnings("unchecked")
+		List<com.team1.cinemaGo.model.MovieSession> ses = (List<com.team1.cinemaGo.model.MovieSession>) session.createCriteria(com.team1.cinemaGo.model.MovieSession.class).list();
+        session.getTransaction().commit();
+        session.close();
+
+		System.out.println("\n\n*** SESSIONS LIST FROM DB ***\n");
+        for (com.team1.cinemaGo.model.MovieSession s : ses){
+        	System.out.println(s.toString());	
+        }
+        
+        
+        System.exit(0);
+        
+        
 	}
 
 }

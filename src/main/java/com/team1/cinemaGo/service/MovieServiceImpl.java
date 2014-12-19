@@ -4,18 +4,23 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.team1.cinemaGo.dao.MovieDAO;
 import com.team1.cinemaGo.model.Movie;
 
 
-@Service
+@Service("movieService")
+@Transactional
 public class MovieServiceImpl implements MovieService{
 
-    private MovieDAO movieDAO;
-    
-    public void setMovieDAO(MovieDAO movieDAO) {
+	private MovieDAO movieDAO;
+	
+	@Autowired
+    @Qualifier("movieDAO")
+	public void setMovieDAO(MovieDAO movieDAO) {
         this.movieDAO = movieDAO;
     }    
     

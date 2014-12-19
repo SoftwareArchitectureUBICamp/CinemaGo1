@@ -2,22 +2,26 @@ package com.team1.cinemaGo.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team1.cinemaGo.model.Cinema;
 
-@Repository
+@Repository("cinemaDAO")
 public class CinemaDAOImpl implements CinemaDAO {
 
 //    private static final Logger logger = LoggerFactory.getLogger(CinemaDAOImpl.class);
     
+	@Autowired
 	private SessionFactory sessionFactory;
 	
-    public void setSessionFactory(SessionFactory sf){
+/*    public void setSessionFactory(SessionFactory sf){
         this.sessionFactory = sf;
-    }
+    }*/
 	
 	@Override
 	public void addCinema(Cinema cinema) {
@@ -46,8 +50,8 @@ public class CinemaDAOImpl implements CinemaDAO {
 
 	@Override
 	public Cinema getCinemaById(int id) {
-        Session session = this.sessionFactory.getCurrentSession();      
-        Cinema cinema = (Cinema) session.load(Cinema.class, new Integer(id));
+        Session session = this.sessionFactory.getCurrentSession();
+        Cinema cinema = (Cinema) session.get(Cinema.class, new Integer(id));
 //      logger.info("Cinema loaded successfully, Cinema details="+cinema);
         return cinema;
 	}
@@ -55,7 +59,7 @@ public class CinemaDAOImpl implements CinemaDAO {
 	@Override
 	public void removeCinema(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Cinema cinema = (Cinema) session.load(Cinema.class, new Integer(id));
+        Cinema cinema = (Cinema) session.get(Cinema.class, new Integer(id));
         if(null != cinema){
             session.delete(cinema);
         }

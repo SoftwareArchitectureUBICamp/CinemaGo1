@@ -4,19 +4,28 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.team1.cinemaGo.model.SessionType;
+import com.team1.cinemaGo.dao.MovieDAO;
 import com.team1.cinemaGo.dao.SessionTypeDAO;
 
-@Service
+
+@Service("sessionTypeService")
+@Transactional
 public class SessionTypeServiceImpl implements SessionTypeService {
 
-    private SessionTypeDAO sessionTypeDAO;
-    
-    public void setSessionTypeDAO(SessionTypeDAO sessionTypeDAO) {
+	@Autowired
+	private SessionTypeDAO sessionTypeDAO;
+
+
+	@Autowired
+    @Qualifier("sessionTypeDAO")
+	public void setSessionTypeDAO(SessionTypeDAO sessionTypeDAO) {
         this.sessionTypeDAO = sessionTypeDAO;
-    }
+    }   
 
 	@Override
 	@Transactional

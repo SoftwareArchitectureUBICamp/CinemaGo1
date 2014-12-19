@@ -5,13 +5,13 @@ import java.util.Set;
 
 public class OrderItem {
 	
-	private Session session;
+	private MovieSession session;
 	private Set<Integer> seats = new HashSet<Integer>();
 	
-	public Session getSession() {
+	public MovieSession getSession() {
 		return session;
 	}
-	public void setSession(Session session) {
+	public void setSession(MovieSession session) {
 		this.session = session;
 	}
 	public Set<Integer> getSeats() {

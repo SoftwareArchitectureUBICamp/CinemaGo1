@@ -22,10 +22,11 @@ public class DataController {
         this.cinemaService = cs;
     }
 
-	@RequestMapping(value = "/cinema", method = RequestMethod.GET)
+	@RequestMapping(value = "/cinema", produces={"application/xml", "application/json"}, method = RequestMethod.GET)
 	public String listCinemas(Model model) {
 		model.addAttribute("cinema", new Cinema());
 	    model.addAttribute("listCinemas", this.cinemaService.listCinemas());
+	    model.addAttribute("cinemaById", this.cinemaService.getCinemaById(1));
 	    return "cinema";
 	}
 	
