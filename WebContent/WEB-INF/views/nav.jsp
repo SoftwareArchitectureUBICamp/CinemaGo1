@@ -30,10 +30,4 @@
             <tbody>
 
 	</table>
-
-     <!--  It is advised to put the <script> tags at the end of the document body so that they don't block rendering of the page -->
-     
-    <script type="text/javascript" src='<c:url value="/resources/js/lib/jquery-1.11.0.js"/>'></script>
-    <script type="text/javascript" src='<c:url value="/resources/js/lib/modernizr-2.6.2-respond-1.1.0.min.js"/>'></script>
-    <script type="text/javascript" src='<c:url value="/resources/js/lib/jquery-ui.js"/>'></script>
-    <script type="text/javascript" src='<c:url value="/resources/js/sessionType.js"/>'></script>
+</div>
