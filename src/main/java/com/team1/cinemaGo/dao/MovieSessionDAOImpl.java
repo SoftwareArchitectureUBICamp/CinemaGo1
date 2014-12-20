@@ -2,15 +2,11 @@ package com.team1.cinemaGo.dao;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.team1.cinemaGo.model.Cinema;
-import com.team1.cinemaGo.model.Movie;
 import com.team1.cinemaGo.model.MovieSession;
 
 @Repository("movieSessionDAO")

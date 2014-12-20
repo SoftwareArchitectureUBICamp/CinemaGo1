@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.team1.cinemaGo.model.SessionType;
-import com.team1.cinemaGo.dao.MovieDAO;
 import com.team1.cinemaGo.dao.SessionTypeDAO;
 
 
