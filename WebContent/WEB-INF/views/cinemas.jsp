@@ -58,6 +58,8 @@
    	</c:forEach>
 	</table>
 
+
+</div>
      <!--  It is advised to put the <script> tags at the end of the document body so that they don't block rendering of the page -->
      
     <script type="text/javascript" src='<c:url value="/resources/js/lib/jquery-1.11.0.js"/>'></script>
