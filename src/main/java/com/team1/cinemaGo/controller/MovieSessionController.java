@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.team1.cinemaGo.model.SessionType;
-import com.team1.cinemaGo.service.SessionTypeService;
+import com.team1.cinemaGo.model.MovieSession;
+import com.team1.cinemaGo.service.MovieSessionService;
 
 @Controller
 @RequestMapping(value="/moviesessions")
@@ -21,49 +21,49 @@ public class MovieSessionController {
 
 	
 	@Autowired(required=true)
-	@Qualifier(value="sessionTypeService")
-	private SessionTypeService sessionTypeService;
+	@Qualifier(value="movieSessionService")
+	private MovieSessionService movieSessionService;
     
-    public void setSessionTypeService(SessionTypeService sessionTypeService){
-        this.sessionTypeService = sessionTypeService;
+    public void setMovieSessionService(MovieSessionService movieSessionService){
+        this.movieSessionService = movieSessionService;
     }	
 	
     @RequestMapping(value="/", method=RequestMethod.GET)
-    public String getSessionType(Model model) {
-		List<SessionType> sessionTypes = sessionTypeService.listSessionType();
+    public String getMovieSessions(Model model) {
 		
-		model.addAttribute("sessionType", new SessionType());
-		model.addAttribute("sessionTypes", sessionTypes);
-		return "sessionType";
+    	List<MovieSession> movieSessions = movieSessionService.listMovieSession();
+		
+		model.addAttribute("movieSession", new MovieSession());
+		model.addAttribute("movieSessions", movieSessions);
+		return "movieSessions";
 	}
     
 
     @RequestMapping(value="/get/{id}", method=RequestMethod.GET)
-    public String getSessionTypeById(@PathVariable int id, Model model) {
+    public String getMovieSessionById(@PathVariable int id, Model model) {
 		
-    	SessionType sessionType = sessionTypeService.getSessionTypeById(id);
+    	MovieSession movieSession = movieSessionService.getMovieSessionById(id);
     	
-    	model.addAttribute("sessionType", sessionType);
-		return "sessionTypeForm";
+    	model.addAttribute("movieSession", movieSession);
+		return "movieSessionsForm";
 	}
 
     
     @RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
-    public String removeSessionType(@PathVariable int id, Model model) {
+    public String removeMovieSession(@PathVariable int id, Model model) {
 		
-    	sessionTypeService.removeSessionType(id);
-		return "redirect:/sessiontypes/";
+    	movieSessionService.removeMovieSession(id);
+		return "redirect:/moviesessions/";
 	}
 
     
     @RequestMapping(value="/save", method=RequestMethod.POST)
-    public String setSessionType(@ModelAttribute("sessionType") SessionType sessionType,
+    public String setMovieSession(@ModelAttribute("movieSession") MovieSession movieSession,
             BindingResult result) {
 		
-    	sessionTypeService.addSessionType(sessionType);
- //   	sessionTypeService.updateSessionType(sessionType);
+    	movieSessionService.addMovieSession(movieSession);
     	
-		return "redirect:/sessiontypes/";
+		return "redirect:/moviesessions/";
 	}
 	
 }

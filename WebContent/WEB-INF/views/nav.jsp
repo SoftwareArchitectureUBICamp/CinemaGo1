@@ -20,10 +20,10 @@
 	<table class="pure-table pure-table-bordered pure-table-striped">
             <thead>
                <tr>
-                  <th width="8%"><a href="/cinema/">Cinemas</a></th>
+                  <th width="8%"><a href="/cinemas/">Cinemas</a></th>
                   <th width="8%"><a href="/movies/">Movies</a></th>
                   <th width="8%"><a href="/sessiontypes/">Session Types</a></th>
-                  <th width="8%"><a href="/1/">ect.</a></th>
+                  <th width="8%"><a href="/moviesessions/">Movie sessions</a></th>
                   <th width="8%"></th>
                </tr>
             </thead>

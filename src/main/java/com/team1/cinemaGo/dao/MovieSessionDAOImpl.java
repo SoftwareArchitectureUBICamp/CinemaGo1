@@ -31,7 +31,7 @@ public class MovieSessionDAOImpl implements MovieSessionDAO {
 	public List<MovieSession> listMovieSession() {
 		Session session = this.sessionFactory.getCurrentSession();
         @SuppressWarnings("unchecked")
-        List<MovieSession> moviesSessionList = session.createQuery("from movieSession").list();
+        List<MovieSession> moviesSessionList = session.createQuery("from MovieSession").list();
 //        for(Movie movie : moviesList){
 //        	//logging
 //        }

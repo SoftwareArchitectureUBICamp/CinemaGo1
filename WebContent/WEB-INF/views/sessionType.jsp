@@ -18,7 +18,9 @@
 
 <body>
    <div style="width: 95%; margin: 0 auto;">
-       
+   
+   	<div><%@ include file="nav.jsp"%></div>
+   
         <div id="sessionTypeDialog" style="display: none;">
             <%@ include file="sessionTypeForm.jsp"%>
         </div>
