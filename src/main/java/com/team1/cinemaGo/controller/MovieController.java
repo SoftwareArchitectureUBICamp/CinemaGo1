@@ -59,7 +59,7 @@ public class MovieController {
 
     	movieService.addMovie(movie);
     	
-		return "redirect:/movie/";
+		return "redirect:/movies/";
 	}
 
 }
