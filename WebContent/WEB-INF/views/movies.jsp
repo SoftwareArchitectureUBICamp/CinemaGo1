@@ -40,16 +40,16 @@
   	<c:forEach items="${movies}" var="movie" varStatus="status">
   	
                        <tr>
-            <td><input name="movies[${status.index}].firstname" value="${movie.movieTitle}"/></td>
-            <td><input name="movies[${status.index}].lastname" value="${movie.duration}"/></td>
-            <td><input name="movies[${status.index}].email" value="${movie.description}"/></td>
+            <td><input name="movies[${status.index}].firstname" value="${movies.movieTitle}"/></td>
+            <td><input name="movies[${status.index}].lastname" value="${movies.duration}"/></td>
+            <td><input name="movies[${status.index}].email" value="${movies.description}"/></td>
                     <td> <nobr>
-              <button onclick="editSessionType(${sessionType.movie});"
+              <button onclick="editMovie(${movies.id});"
                                 class="pure-button pure-button-primary">
                              <i class="fa fa-pencil"></i> Edit
                         </button>
 
-                        <a href="delete/${sessionType.movie}" class="pure-button pure-button-primary"
+                        <a href="delete/${movies.id}" class="pure-button pure-button-primary"
                    onclick="return confirm('Are you sure you want to delete this movie?');">
                              <i class="fa fa-times"></i>Delete
                         </a>
@@ -63,7 +63,7 @@
     <script type="text/javascript" src='<c:url value="/resources/js/lib/jquery-1.11.0.js"/>'></script>
     <script type="text/javascript" src='<c:url value="/resources/js/lib/modernizr-2.6.2-respond-1.1.0.min.js"/>'></script>
     <script type="text/javascript" src='<c:url value="/resources/js/lib/jquery-ui.js"/>'></script>
-    <script type="text/javascript" src='<c:url value="/resources/js/sessionType.js"/>'></script>
+    <script type="text/javascript" src='<c:url value="/resources/js/movies.js"/>'></script>
 
 </body>
 </html>
