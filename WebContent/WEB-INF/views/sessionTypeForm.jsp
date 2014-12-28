@@ -14,6 +14,7 @@
               <label for="name">Name</label>
               <form:input path="sessionName" placeholder="Session Name Type" />
           </div>
+		  
           <div class="pure-control-group">
               <label for="price">Price</label>
               <form:input path="sessionPrice" placeholder="Price" maxlength="10" />

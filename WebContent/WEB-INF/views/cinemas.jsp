@@ -37,19 +37,19 @@
             </thead>
             <tbody>
 
-  	<c:forEach items="${cinemas}" var="cinemas" varStatus="status">
+  	<c:forEach items="${cinemas}" var="cinema" varStatus="status">
   	
                        <tr>
-            <td><input name="cinemas[${status.index}].firstname" value="${cinema1.cinemaname}"/></td>
-            <td><input name="cinemas[${status.index}].lastname" value="${cinema1.rowscount}"/></td>
-            <td><input name="cinemas[${status.index}].email" value="${cinema1.columnscount}"/></td>
+            <td><input name="cinemas[${status.index}].firstname" value="${cinemas.cinemaname}"/></td>
+            <td><input name="cinemas[${status.index}].lastname" value="${cinemas.rowscount}"/></td>
+            <td><input name="cinemas[${status.index}].email" value="${cinemas.columnscount}"/></td>
                     <td> <nobr>
-              <button onclick="editSessionType(${sessionType.movie});"
+              <button onclick="editCinema(${cinemas.id});"
                                 class="pure-button pure-button-primary">
                              <i class="fa fa-pencil"></i> Edit
                         </button>
 
-                        <a href="delete/${sessionType.movie}" class="pure-button pure-button-primary"
+                        <a href="delete/${cinemas.id}" class="pure-button pure-button-primary"
                    onclick="return confirm('Are you sure you want to delete this?');">
                              <i class="fa fa-times"></i>Delete
                         </a>
@@ -58,14 +58,12 @@
    	</c:forEach>
 	</table>
 
-
-</div>
      <!--  It is advised to put the <script> tags at the end of the document body so that they don't block rendering of the page -->
      
     <script type="text/javascript" src='<c:url value="/resources/js/lib/jquery-1.11.0.js"/>'></script>
     <script type="text/javascript" src='<c:url value="/resources/js/lib/modernizr-2.6.2-respond-1.1.0.min.js"/>'></script>
     <script type="text/javascript" src='<c:url value="/resources/js/lib/jquery-ui.js"/>'></script>
-    <script type="text/javascript" src='<c:url value="/resources/js/sessionType.js"/>'></script>
+    <script type="text/javascript" src='<c:url value="/resources/js/cinemas.js"/>'></script>
 
 </body>
 </html>

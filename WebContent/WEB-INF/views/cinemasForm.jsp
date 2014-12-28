@@ -11,22 +11,19 @@
           <legend></legend>
 
           <div class="pure-control-group">
-              <label for="start_time">Start time</label>
-              <form:input path="startTime" placeholder="Start time" />
+              <label for="cinema_name">Cinema Name</label>
+              <form:input path="cinemaName" placeholder="Cinema Name" />
+          </div>
+          
+		  <div class="pure-control-group">
+              <label for="rows_count">Rows Count</label>
+              <form:input path="rowsCount" placeholder="Rows Count" />
           </div>
 		  
-		//  fetch
-	// name="movie_id")
-	// private Movie movie;
-
-	// name="cinema_id")
-	// private Cinema cinema;
-
-	// name="session_type_id")
-	// private SessionType sessionType;
-	
-	// @OneToMany(mappedBy="movieSession", cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	// private Set<Seat> occupiedSeats = new HashSet<Seat>(0);
+		  <div class="pure-control-group">
+              <label for="columns_count">Columns Count</label>
+              <form:input path="columnsCount" placeholder="Columns Count" />
+          </div>
 		  
           <form:input path="id" type="hidden" />
       </fieldset>

@@ -100,7 +100,6 @@ public class MovieSession {
 		this.occupiedSeats = occupiedSeats;
 	}
 
-
 	//Comparators for sort method
 	public static class Comparators {
 	    public static final Comparator<MovieSession> DATE = (MovieSession o1, MovieSession o2) -> o1.startTime.compareTo(o2.startTime);
@@ -113,6 +112,5 @@ public class MovieSession {
 	public String toString() {
 		return "[" + cinema.getCinemaName() + "] '" + movie.getMovieTitle()+ "': date: " + startTime.toLocalDate() + "; time: " + startTime.toLocalTime() + "-" + this.getEndTime().toLocalTime() + " (duration=" + movie.getDuration() + "min)";
 	}
-	
 	
 }
