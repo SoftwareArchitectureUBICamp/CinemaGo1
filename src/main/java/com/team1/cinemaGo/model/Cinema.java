@@ -21,10 +21,10 @@ public class Cinema {
 
 	@Column(name="rows_count")	
 	private int rowsCount;
+	
 	@Column(name="columns_count")	
 	private int columnsCount;
 
-	
 	public String getCinemaName() {
 		return cinemaName;
 	}
