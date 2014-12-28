@@ -1,10 +1,6 @@
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 
-html,
-button,
-input,
-select,
-textarea {
+html,button,input,select,textarea {
     color: #222;
 }
 
@@ -32,10 +28,7 @@ hr {
     padding: 0;
 }
 
-audio,
-canvas,
-img,
-video {
+audio,canvas,img,video {
     vertical-align: middle;
 }
 
@@ -55,7 +48,6 @@ textarea {
     color: #000;
     padding: 0.2em 0;
 }
-
 
 /* ===== Initializr Styles ==================================================
    Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
@@ -97,7 +89,7 @@ body {
 /* ==============
     MOBILE: Menu
    ============== */
-
+   
 nav ul {
     margin: 0;
     padding: 0;
@@ -114,12 +106,10 @@ nav a {
 
     color: brown;
 
-
     -webkit-transition: color 200ms ease-in 100ms;
     -moz-transition: color 200ms ease-in 100ms;
     -o-transition: color 200ms ease-in 100ms;
     transition: color 200ms ease-in 100ms;
-
 }
 
 nav a:hover,
@@ -134,8 +124,8 @@ nav a:hover {
 /* ==============
     MOBILE: Main
    ============== */
-
-    .cb-wrap{
+   
+.cb-wrap{
         display: none;
     }
 
@@ -186,7 +176,6 @@ nav a:hover {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
     font-weight: normal;
 }
-
 
 .topimgtitle {
     position: relative;
@@ -310,10 +299,7 @@ footer a:hover {
     color: #ff0;
 }
 
-
- 
-
-   .title {
+.title {
         float: left;
         display: block;
         margin: 0 auto;                
@@ -327,15 +313,12 @@ footer a:hover {
         transition: all .3s ease;
         background-position-y: center;         
         background-position-x: center;         
+}
 
-    }
-
-
-    .con-wrap {
+.con-wrap {
         position: relative;
         background-color:#fff;
-    }
-
+}
 
 /***  Chart and Order form ***/
 
@@ -343,8 +326,6 @@ input {
     font-family: Dosis, sans-serif;
     outline: none;
 }
-
-
 
 .continueBtn, .cancelBtn {
     float: right;
@@ -366,13 +347,9 @@ input {
     color: #fff;
 }
 
-
 .continueBtn:hover, .cancelBtn:hover, .continueBtn:focus, .cancelBtn:focus  {
     box-shadow: 0 0 5px #000;
 }
-
-/*** ****/
-
 
 /* ==========================================================================
    Media Queries
@@ -434,7 +411,6 @@ nav a {
 
 }
 
-
     nav a {
         float: left;
         width: 12%;
@@ -450,7 +426,6 @@ nav a {
     nav li:last-child a {
         margin-right: 0;
     }
-
 
 /* ========================
     INTERMEDIATE: IE Fixes
