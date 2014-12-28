@@ -25,12 +25,13 @@
         	<%@ include file="movieSessionsForm.jsp"%>
         </div>
 
-        <h1>List Of Session types</h1>
+        <h1>List Of Movie Sessions</h1>
 
         <button class="pure-button pure-button-primary" onclick="addSessionType()">
-            <i class="fa fa-plus"></i> Add Session type
+            <i class="fa fa-plus"></i> Add New Session
          </button>
          <br>
+         <p class="error">${error}</p>
          <table class="pure-table pure-table-bordered pure-table-striped">
             <thead>
                <tr>
@@ -45,15 +46,15 @@
             <tbody>
                <c:forEach items="${movieSessions}" var="movieSession" varStatus="loopCounter">
                <tr>
-                   <td><input name="movieSession[${status.index}].1" value="${loopCounter.count}" /></td>
-                   <td><input name="movieSession[${status.index}].2" value="${movieSession.startTime}" /></td>
-                   <td><input name="movieSession[${status.index}].3" value="${movieSession.movie.movieTitle}" /></td>
-                   <td><input name="movieSession[${status.index}].4" value="${movieSession.cinema.cinemaName}" /></td>
-                   <td><input name="movieSession[${status.index}].5" value="${movieSession.sessionType.sessionName}" /></td>
-                   <td><input name="movieSession[${status.index}].6" value="${movieSession.sessionType.sessionPrice}" /></td>
+                   <td><c:out value="${loopCounter.count}" /></td>
+                   <td><c:out value="${movieSession.startTime}" /></td>
+                   <td><c:out value="${movieSession.movie.movieTitle}" /></td>
+                   <td><c:out value="${movieSession.cinema.cinemaName}" /></td>
+                   <td><c:out value="${movieSession.sessionType.sessionName}" /></td>
+                   <td><c:out value="${movieSession.sessionType.sessionPrice}" /></td>
                    <td>
                      <nobr>
-                        <button onclick="editmovieSessions(${movieSession.id});"
+                        <button onclick="editSessionType(${movieSession.id});"
                                 class="pure-button pure-button-primary">
                              <i class="fa fa-pencil"></i> Edit
                         </button>
@@ -75,7 +76,7 @@
     <script type="text/javascript" src='<c:url value="/resources/js/lib/jquery-1.11.0.js"/>'></script>
     <script type="text/javascript" src='<c:url value="/resources/js/lib/modernizr-2.6.2-respond-1.1.0.min.js"/>'></script>
     <script type="text/javascript" src='<c:url value="/resources/js/lib/jquery-ui.js"/>'></script>
-    <script type="text/javascript" src='<c:url value="/resources/js/movieSessions.js"/>'></script>
+    <script type="text/javascript" src='<c:url value="/resources/js/movieSession.js"/>'></script>
     
 
 </body>

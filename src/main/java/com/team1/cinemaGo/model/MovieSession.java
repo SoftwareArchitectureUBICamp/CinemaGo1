@@ -112,5 +112,5 @@ public class MovieSession {
 	public String toString() {
 		return "[" + cinema.getCinemaName() + "] '" + movie.getMovieTitle()+ "': date: " + startTime.toLocalDate() + "; time: " + startTime.toLocalTime() + "-" + this.getEndTime().toLocalTime() + " (duration=" + movie.getDuration() + "min)";
 	}
-	
+		
 }

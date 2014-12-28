@@ -80,6 +80,15 @@ public class MovieSessionController {
     @RequestMapping(value="/get/{id}", method=RequestMethod.GET)
     public String getMovieSessionById(@PathVariable long id, Model model) {
 		
+    	List<Movie> movies = movieService.listMovie();
+    	List<Cinema> cinemas = cinemaService.listCinemas();
+    	List<SessionType> sessionTypes = sessionTypeService.listSessionType();
+    	
+    	model.addAttribute("movies", movies);
+    	model.addAttribute("cinemas", cinemas);
+    	model.addAttribute("sessionTypes", sessionTypes);
+
+    	
     	MovieSession movieSession = movieSessionService.getMovieSessionById(id);
     	model.addAttribute("movieSession", movieSession);
 		
