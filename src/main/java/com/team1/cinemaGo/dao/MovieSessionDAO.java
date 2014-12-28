@@ -9,7 +9,7 @@ public interface MovieSessionDAO {
 	   public void addMovieSession(MovieSession movieSession);
 	    public void updateMovieSession(MovieSession movieSession);
 	    public List<MovieSession> listMovieSession();
-	    public MovieSession getMovieSessionById(int id);
-	    public void removeMovieSession(int id);
+	    public MovieSession getMovieSessionById(long id);
+	    public void removeMovieSession(long id);
 	
 }

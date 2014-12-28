@@ -39,7 +39,7 @@ public class MovieController {
 	}
 
     @RequestMapping(value="/get/{id}", method=RequestMethod.GET)
-    public String getMovie(@PathVariable int id, Model model) {
+    public String getMovie(@PathVariable long id, Model model) {
 		Movie movie = movieService.getMovieById(id);
 		model.addAttribute("movie", movie);		
 		
@@ -47,7 +47,7 @@ public class MovieController {
 	}
     
     @RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
-    public String removeMovie(@PathVariable int id, Model model) {
+    public String removeMovie(@PathVariable long id, Model model) {
 		
     	movieService.removeMovie(id);
 		return "redirect:/movies/";

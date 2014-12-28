@@ -38,7 +38,7 @@ public class MovieServiceImpl implements MovieService{
 
 	@Override
     @Transactional
-	public Movie getMovieById(Integer id) {
+	public Movie getMovieById(Long id) {
 		return movieDAO.getMovieById(id);
 	}
 
@@ -50,7 +50,7 @@ public class MovieServiceImpl implements MovieService{
 
 	@Override
     @Transactional
-	public void removeMovie(Integer id) {
+	public void removeMovie(Long id) {
 		movieDAO.removeMovie(id);
 	}
 

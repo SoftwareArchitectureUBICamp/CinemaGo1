@@ -9,7 +9,7 @@ public interface MovieDAO {
     public void addMovie(Movie movie);
     public void updateMovie(Movie movie);
     public List<Movie> listMovie();
-    public Movie getMovieById(int id);
-    public void removeMovie(int id);
+    public Movie getMovieById(long id);
+    public void removeMovie(long id);
 
 }

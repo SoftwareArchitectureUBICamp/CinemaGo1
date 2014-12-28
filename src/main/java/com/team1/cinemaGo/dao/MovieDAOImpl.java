@@ -46,16 +46,16 @@ public class MovieDAOImpl implements MovieDAO {
 	}
 
 	@Override
-	public Movie getMovieById(int id) {
+	public Movie getMovieById(long id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Movie movie = (Movie) session.get(Movie.class, new Integer(id));
+		Movie movie = (Movie) session.get(Movie.class, new Long(id));
         return movie;
 	}
 
 	@Override
-	public void removeMovie(int id) {
+	public void removeMovie(long id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Movie movie = (Movie) session.get(Movie.class, new Integer(id));
+        Movie movie = (Movie) session.get(Movie.class, new Long(id));
         if(null != movie){
             session.delete(movie);
         }

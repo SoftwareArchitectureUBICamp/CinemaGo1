@@ -73,8 +73,6 @@ public class MovieSession {
 		return this.startTime.plusMinutes(this.movie.getDuration());
 	}
 	
-	
-	
 	public long getId() {
 		return id;
 	}
