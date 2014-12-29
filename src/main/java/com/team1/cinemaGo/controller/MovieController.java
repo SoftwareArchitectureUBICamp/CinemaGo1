@@ -17,7 +17,7 @@ import com.team1.cinemaGo.service.MovieService;
 
 
 @Controller 
-@RequestMapping(value="/movies")
+@RequestMapping(value="admin/movies")
 public class MovieController {
 	
 	@Autowired(required=true)
@@ -40,7 +40,8 @@ public class MovieController {
 
     @RequestMapping(value="/get/{id}", method=RequestMethod.GET)
     public String getMovie(@PathVariable long id, Model model) {
-		Movie movie = movieService.getMovieById(id);
+		
+    	Movie movie = movieService.getMovieById(id);
 		model.addAttribute("movie", movie);		
 		
 		return "moviesForm";
@@ -50,7 +51,7 @@ public class MovieController {
     public String removeMovie(@PathVariable long id, Model model) {
 		
     	movieService.removeMovie(id);
-		return "redirect:/movies/";
+		return "redirect:/admin/movies/";
 		
 	}
  
@@ -59,7 +60,7 @@ public class MovieController {
 
     	movieService.addMovie(movie);
     	
-		return "redirect:/movies/";
+		return "redirect:/admin/movies/";
 	}
 
 }

@@ -26,16 +26,26 @@ public class Movie {
 	@Column(name="movie_description")
 	private String description;
 	
+	@Column(name="movie_img_url")
+	private String imgUrl;
 	
 	public String getMovieTitle() {
 		return movieTitle;
 	}
 	
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
 	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

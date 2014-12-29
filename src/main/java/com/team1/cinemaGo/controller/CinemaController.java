@@ -17,7 +17,7 @@ import com.team1.cinemaGo.service.CinemaService;
 
 
 @Controller
-@RequestMapping("/cinemas")
+@RequestMapping("admin/cinemas")
 public class CinemaController {
 
 	
@@ -51,7 +51,7 @@ public class CinemaController {
     public String removeCinema(@PathVariable int id, Model model) {
 		
     	cinemaService.removeCinema(id);
-		return "redirect:/cinemas/";
+		return "redirect:/admin/cinemas/";
 		
 	}
  
@@ -59,7 +59,7 @@ public class CinemaController {
     public String setMovie(@ModelAttribute("cinema") Cinema cinema, BindingResult result) {
 
     	cinemaService.addCinema(cinema);
-		return "redirect:/cinema/";
+		return "redirect:/admin/cinemas/";
 	}
 
 	
