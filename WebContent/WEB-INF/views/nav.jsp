@@ -20,10 +20,10 @@
 	<table class="pure-table pure-table-bordered pure-table-striped">
             <thead>
                <tr>
-                  <th width="8%"><a href="/cinemas/">Cinemas</a></th>
-                  <th width="8%"><a href="/movies/">Movies</a></th>
-                  <th width="8%"><a href="/sessiontypes/">Session Types</a></th>
-                  <th width="8%"><a href="/moviesessions/">Movie sessions</a></th>
+                  <th width="8%"><a href="/admin/cinemas/">Cinemas</a></th>
+                  <th width="8%"><a href="/admin/movies/">Movies</a></th>
+                  <th width="8%"><a href="/admin/sessiontypes/">Session Types</a></th>
+                  <th width="8%"><a href="/admin/moviesessions/">Movie sessions</a></th>
                   <th width="8%"></th>
                </tr>
             </thead>

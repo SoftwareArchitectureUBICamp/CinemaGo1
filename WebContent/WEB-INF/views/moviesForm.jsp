@@ -1,7 +1,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:url var="actionUrl" value="/sessiontypes/save" />
+<c:url var="actionUrl" value="/admin/movies/save" />
 
 <form:form id="movieForm" commandName="movie" method="post"
      
@@ -23,6 +23,11 @@
           <div class="pure-control-group">
               <label for="price">Description</label>
               <form:input path="description" placeholder="Description" maxlength="100" />
+          </div>
+
+          <div class="pure-control-group">
+              <label for="price">Image url</label>
+              <form:input path="imgUrl" placeholder="ImgUrl" maxlength="100" />
           </div>
 		  
           <form:input path="id" type="hidden" />

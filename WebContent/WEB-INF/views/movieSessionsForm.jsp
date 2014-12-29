@@ -1,11 +1,9 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:url var="actionUrl" value="/moviesessions/save" />
+<c:url var="actionUrl" value="/admin/moviesessions/save" />
 
-<form:form id="movieSessionForm" commandName="movieSession" method="post"
-     
-     action="${actionUrl}" class="pure-form pure-form-aligned">
+<form:form id="movieSessionForm" commandName="movieSession" method="post" action="${actionUrl}" class="pure-form pure-form-aligned">
 
      <fieldset>
           <legend></legend>

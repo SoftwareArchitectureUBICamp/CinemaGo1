@@ -12,7 +12,6 @@
   th {
        text-align: left
   }
-
 </style>
 </head>
 
@@ -32,24 +31,31 @@
          </button>
          <br>
          <p class="error">${error}</p>
-         <table class="pure-table pure-table-bordered pure-table-striped">
+         <table class="pure-table pure-table-bordered pure-table-striped admintable">
             <thead>
                <tr>
-                  <th width="4%">Nr.</th>
-                  <th width="12%">Session time</th>
-                  <th width="12%">Movie</th>
+                  <!-- <th width="4%">Nr.</th> -->
+                  <th width="20%">Movie</th>
                   <th width="12%">Cinema</th>
+                  <th width="8%">Date</th>
+                  <th width="10%">Session Time</th>
+                  <th width="8%">Duration</th>
+                  <th width="10%">End Time</th>                  
                   <th width="12%">Session Type</th>
                   <th width="12%">Price</th>
+                  <th></th>
                </tr>
             </thead>
             <tbody>
                <c:forEach items="${movieSessions}" var="movieSession" varStatus="loopCounter">
                <tr>
-                   <td><c:out value="${loopCounter.count}" /></td>
-                   <td><c:out value="${movieSession.startTime}" /></td>
+                   <!-- <td><c:out value="${loopCounter.count}" /></td> -->
                    <td><c:out value="${movieSession.movie.movieTitle}" /></td>
                    <td><c:out value="${movieSession.cinema.cinemaName}" /></td>
+                   <td><c:out value="${movieSession.startTime.toLocalDate()}" /></td>
+                   <td><c:out value="${movieSession.startTime.toLocalTime()}" /></td>
+                   <td><c:out value="${movieSession.movie.duration}" /></td>
+                   <td><c:out value="${movieSession.getEndTime().toLocalTime()}" /></td>
                    <td><c:out value="${movieSession.sessionType.sessionName}" /></td>
                    <td><c:out value="${movieSession.sessionType.sessionPrice}" /></td>
                    <td>

@@ -5,8 +5,8 @@
 <title>List Of Session types</title>
 
 <link rel="stylesheet" href='<c:url value="/resources/css/normalize.min.css"/>'>
-<link rel="stylesheet" href='<c:url value="/resources/css/main.css"/>'>
 <link rel="stylesheet" href="<c:url value="/resources/css/jquery-ui.min.css"/>">
+<link rel="stylesheet" href='<c:url value="/resources/css/main.css"/>'>
 
 <style type="text/css">
   th {
@@ -30,8 +30,8 @@
         <button class="pure-button pure-button-primary" onclick="addSessionType()">
             <i class="fa fa-plus"></i> Add Session type
          </button>
-         <br>
-         <table class="pure-table pure-table-bordered pure-table-striped">
+         <br><br>
+         <table class="pure-table pure-table-bordered pure-table-striped admintable">
             <thead>
                <tr>
                   <th width="4%">Nr.</th>
@@ -72,6 +72,5 @@
     <script type="text/javascript" src='<c:url value="/resources/js/lib/jquery-ui.js"/>'></script>
     <script type="text/javascript" src='<c:url value="/resources/js/sessionType.js"/>'></script>
     
-
 </body>
 </html>

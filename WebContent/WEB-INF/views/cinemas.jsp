@@ -20,43 +20,53 @@
 <div style="width: 95%; margin: 0 auto;">
 
 	<div><%@ include file="nav.jsp"%></div>
+
+    <div id="cinemaDialog" style="display: none;">
+      	<%@ include file="cinemasForm.jsp"%>
+    </div>
 	
-	<h1>Cinemas</h1>
-	        <button class="pure-button pure-button-primary" onclick="addSessionType()">
+	<h1>List of Cinemas</h1>
+	
+	        <button class="pure-button pure-button-primary" onclick="addCinema()">
             <i class="fa fa-plus"></i> Add Cinema </button>
             <br><br>
             
-	<table class="pure-table pure-table-bordered pure-table-striped">
+	<table class="pure-table pure-table-bordered pure-table-striped admintable">
             <thead>
                <tr>
-                  <th width="12%">Cinemas</th>
-                  <th width="8%">Seasion</th>
-                  <th width="12%">Schedule</th>
+                  <th width="12%">Cinema name</th>
+                  <th width="8%">Row count</th>
+                  <th width="12%">Column count</th>
                   <th width="8%"></th>
                </tr>
             </thead>
             <tbody>
 
-  	<c:forEach items="${cinemas}" var="cinema" varStatus="status">
+<c:forEach items="${cinemas}" var="cinema" varStatus="status">
   	
-                       <tr>
-            <td><input name="cinemas[${status.index}].firstname" value="${cinemas.cinemaname}"/></td>
-            <td><input name="cinemas[${status.index}].lastname" value="${cinemas.rowscount}"/></td>
-            <td><input name="cinemas[${status.index}].email" value="${cinemas.columnscount}"/></td>
-                    <td> <nobr>
-              <button onclick="editCinema(${cinemas.id});"
-                                class="pure-button pure-button-primary">
-                             <i class="fa fa-pencil"></i> Edit
-                        </button>
+	<tr>
 
-                        <a href="delete/${cinemas.id}" class="pure-button pure-button-primary"
-                   onclick="return confirm('Are you sure you want to delete this?');">
-                             <i class="fa fa-times"></i>Delete
-                        </a>
-                      </nobr>
-        </tr>
-   	</c:forEach>
-	</table>
+    	<td><c:out value="${cinema.cinemaName}" /></td>
+        <td><c:out value="${cinema.rowsCount}" /></td>
+        <td><c:out value="${cinema.columnsCount}" /></td>
+
+        <td> 
+        	<nobr>
+            <button onclick="editCinema(${cinema.id});" class="pure-button pure-button-primary">
+            	<i class="fa fa-pencil"></i>Edit
+            </button>
+
+            <a href="delete/${cinema.id}" class="pure-button pure-button-primary" onclick="return confirm('Are you sure you want to delete this?');">
+            	<i class="fa fa-times"></i>Delete
+            </a>
+            </nobr>
+       </td>
+	</tr>
+</c:forEach>
+   			
+            </tbody>
+         </table>
+     </div>
 
      <!--  It is advised to put the <script> tags at the end of the document body so that they don't block rendering of the page -->
      

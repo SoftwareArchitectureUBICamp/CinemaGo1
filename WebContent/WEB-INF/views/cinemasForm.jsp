@@ -1,27 +1,25 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:url var="actionUrl" value="/sessiontypes/save" />
+<c:url var="actionUrl" value="/admin/cinemas/save" />
 
-<form:form id="movieSessionsForm" commandName="movieSession" method="post"
-     
-     action="${actionUrl}" class="pure-form pure-form-aligned">
+<form:form id="cinemaForm" commandName="cinema" method="post" action="${actionUrl}" class="pure-form pure-form-aligned">
 
      <fieldset>
           <legend></legend>
 
           <div class="pure-control-group">
-              <label for="cinema_name">Cinema Name</label>
+              <label for="cinemaName">Cinema Name</label>
               <form:input path="cinemaName" placeholder="Cinema Name" />
           </div>
           
 		  <div class="pure-control-group">
-              <label for="rows_count">Rows Count</label>
+              <label for="rows">Rows Count</label>
               <form:input path="rowsCount" placeholder="Rows Count" />
           </div>
 		  
 		  <div class="pure-control-group">
-              <label for="columns_count">Columns Count</label>
+              <label for="columns">Columns Count</label>
               <form:input path="columnsCount" placeholder="Columns Count" />
           </div>
 		  

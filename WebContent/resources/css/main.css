@@ -57,6 +57,33 @@ textarea {
 }
 
 
+.error{
+	color: red;
+	background: antiquewhite;
+	padding: 10px;
+}
+
+
+	.adminTable{
+		border-collapse:collapse; 
+	}
+	.adminTable td{ 
+		padding:7px; border:#4e95f4 1px solid;
+	}
+	/* provide some minimal visual accomodation for IE8 and below */
+	.adminTable tr{
+		background: linen;
+	}
+	/*  Define the background color for all the ODD background rows  */
+	.adminTable tr:nth-child(odd){ 
+		background: linen;
+	}
+	/*  Define the background color for all the EVEN background rows  */
+	.adminTable tr:nth-child(even){
+		background: moccasin;
+	}
+	
+
 /* ===== Initializr Styles ==================================================
    Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
    ========================================================================== */

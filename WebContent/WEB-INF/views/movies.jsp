@@ -2,15 +2,17 @@
 
 <html>
 <head>
-<title>Movies</title>
+<title>List of Movies</title>
 
 <link rel="stylesheet" href='<c:url value="/resources/css/normalize.min.css"/>'>
 <link rel="stylesheet" href="<c:url value="/resources/css/jquery-ui.min.css"/>">
 <link rel="stylesheet" href='<c:url value="/resources/css/main.css"/>'>
 
 <style type="text/css">
-  th {
-       text-align: left
+  
+  img{
+  	vertical-align: middle;
+	max-height: 200;
   }
 
 </style>
@@ -20,19 +22,24 @@
 <div style="width: 95%; margin: 0 auto;">
 
 	<div><%@ include file="nav.jsp"%></div>
+
+        <div id="movieDialog" style="display: none;">
+        	<%@ include file="moviesForm.jsp"%>
+        </div>
 	
-	<h1>Movies</h1>
-	        <button class="pure-button pure-button-primary" onclick="addSessionType()">
+	<h1>List of Movies</h1>
+	        <button class="pure-button pure-button-primary" onclick="addMovie()">
             <i class="fa fa-plus"></i> Add Movie </button>
             <br><br>
             
-	<table class="pure-table pure-table-bordered pure-table-striped">
+	<table class="pure-table pure-table-bordered pure-table-striped admintable">
             <thead>
                <tr>
-                  <th width="12%">Movie</th>
-                  <th width="8%">Duration</th>
-                  <th width="12%">Description</th>
-                  <th width="8%"></th>
+                  <th>Movie Image</th>
+                  <th>Movie</th>
+                  <th>Duration</th>
+                  <th>Description</th>
+                  <th></th>
                </tr>
             </thead>
             <tbody>
@@ -40,24 +47,29 @@
   	<c:forEach items="${movies}" var="movie" varStatus="status">
   	
                        <tr>
-            <td><input name="movies[${status.index}].firstname" value="${movies.movieTitle}"/></td>
-            <td><input name="movies[${status.index}].lastname" value="${movies.duration}"/></td>
-            <td><input name="movies[${status.index}].email" value="${movies.description}"/></td>
-                    <td> <nobr>
-              <button onclick="editMovie(${movies.id});"
+
+            <td><img src="<c:out value="${movie.imgUrl}" />"/></td>
+            <td><c:out value="${movie.movieTitle}" /></td>
+            <td><c:out value="${movie.duration}" /></td>
+            <td><c:out value="${movie.description}" /></td>
+            <td> <nobr>
+              <button onclick="editMovie(${movie.id});"
                                 class="pure-button pure-button-primary">
                              <i class="fa fa-pencil"></i> Edit
                         </button>
 
-                        <a href="delete/${movies.id}" class="pure-button pure-button-primary"
+                        <a href="delete/${movie.id}" class="pure-button pure-button-primary"
                    onclick="return confirm('Are you sure you want to delete this movie?');">
                              <i class="fa fa-times"></i>Delete
                         </a>
                       </nobr>
+             </td>
         </tr>
    	</c:forEach>
+   	</tbody>
 	</table>
 
+</div>
      <!--  It is advised to put the <script> tags at the end of the document body so that they don't block rendering of the page -->
      
     <script type="text/javascript" src='<c:url value="/resources/js/lib/jquery-1.11.0.js"/>'></script>
