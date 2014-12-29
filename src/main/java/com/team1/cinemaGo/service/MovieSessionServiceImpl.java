@@ -2,6 +2,8 @@ package com.team1.cinemaGo.service;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,18 +30,18 @@ public class MovieSessionServiceImpl implements MovieSessionService {
 			movieSessionDAO.addMovieSession(movieSession);
 		} else
 		{
-			throw new IOException("Overlap");
+			throw new IOException("Error: Can not save record! New movie session is overlaping with another movie session! Make sure you have 30 min break between sessions.<br>" + movieSession.toString());
 		}
 	}
 
 	@Override
 	@Transactional
-	public void updateMovieSession(MovieSession movieSession) {
+	public void updateMovieSession(MovieSession movieSession) throws IOException {
 		if (insertControl(movieSession)){
 			movieSessionDAO.updateMovieSession(movieSession);
 		} else
 		{
-			
+			throw new IOException("Error: Can not save record! New movie session is overlaping with another movie session! Make sure you have 30 min break between sessions.<br>" + movieSession.toString());			
 		}
 
 	}
@@ -67,6 +69,12 @@ public class MovieSessionServiceImpl implements MovieSessionService {
 		boolean canInsert = true;
 		List<MovieSession> tmpsess = movieSessionDAO.listMovieSession();
 		
+		MovieSession old = movieSessionDAO.getMovieSessionById(session.getId());
+		
+		if (old != null) {
+			tmpsess.remove(old);
+		}
+		
 		tmpsess.add(session);
 		Collections.sort(tmpsess, MovieSession.Comparators.CINEMADATE);
 
@@ -86,5 +94,28 @@ public class MovieSessionServiceImpl implements MovieSessionService {
 		return canInsert;
 
 	}
+	
+	public List<MovieSession> getActiveSessions() {
+		
+		LocalDateTime now = LocalDateTime.now();
+		List<MovieSession> allSessions = movieSessionDAO.listMovieSession();
+		List<MovieSession> filteredSessions = new ArrayList<MovieSession>();
+		
+		filteredSessions = allSessions.stream().filter(s -> s.getStartTime().isAfter(now)).collect(Collectors.toList());
+		return filteredSessions;
+		
+	}
+
+	public List<MovieSession> getSessionsForDateInterval(LocalDateTime fromDate, LocalDateTime toDate) {
+		
+		List<MovieSession> allSessions = movieSessionDAO.listMovieSession();
+		List<MovieSession> filteredSessions = new ArrayList<MovieSession>();
+		
+		filteredSessions = allSessions.stream().filter(s -> s.getStartTime().toLocalDate().isAfter(fromDate.minusDays(1).toLocalDate())
+														 && s.getStartTime().toLocalDate().isBefore(toDate.plusDays(1).toLocalDate())).collect(Collectors.toList());
+		return filteredSessions;
+		
+	}
+	
 	
 }

@@ -38,7 +38,7 @@ public class SessionTypeDAOImpl implements SessionTypeDAO {
 	public List<SessionType> listSessionType() {
 		Session session = this.sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List<SessionType> sessionTypeList = session.createQuery("from SessionType").list(); 
+		List<SessionType> sessionTypeList = session.createQuery("from SessionType ORDER BY sessionName").list(); 
 		return sessionTypeList;
 	}
 

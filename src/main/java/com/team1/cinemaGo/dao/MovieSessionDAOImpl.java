@@ -24,14 +24,14 @@ public class MovieSessionDAOImpl implements MovieSessionDAO {
 	@Override
 	public void updateMovieSession(MovieSession movieSession) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.saveOrUpdate(movieSession);
+		session.merge(movieSession);
 	}
 
 	@Override
 	public List<MovieSession> listMovieSession() {
 		Session session = this.sessionFactory.getCurrentSession();
         @SuppressWarnings("unchecked")
-        List<MovieSession> moviesSessionList = session.createQuery("from MovieSession").list();
+        List<MovieSession> moviesSessionList = session.createQuery("FROM MovieSession ORDER BY startTime, cinema").list();
 //        for(Movie movie : moviesList){
 //        	//logging
 //        }

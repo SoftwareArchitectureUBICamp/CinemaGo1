@@ -25,20 +25,20 @@ public class MovieDAOImpl implements MovieDAO {
 	@Override
 	public void addMovie(Movie movie) {
 		Session session = this.sessionFactory.getCurrentSession();
-	    session.persist(movie);
+	    session.saveOrUpdate(movie);
 	}
 
 	@Override
 	public void updateMovie(Movie movie) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.update(movie);
+		session.saveOrUpdate(movie);
 	}
 
 	@Override
 	public List<Movie> listMovie() {
 		Session session = this.sessionFactory.getCurrentSession();
         @SuppressWarnings("unchecked")
-        List<Movie> moviesList = session.createQuery("from Movie").list();
+        List<Movie> moviesList = session.createQuery("from Movie ORDER BY movieTitle").list();
 //        for(Movie movie : moviesList){
 //        	//logging
 //        }

@@ -16,7 +16,7 @@ import com.team1.cinemaGo.model.SessionType;
 import com.team1.cinemaGo.service.SessionTypeService;
 
 @Controller
-@RequestMapping(value="/sessiontypes")
+@RequestMapping(value="admin/sessiontypes")
 public class SessionTypeController {
 
 	@Autowired(required=true)
@@ -51,7 +51,7 @@ public class SessionTypeController {
     public String removeSessionType(@PathVariable int id, Model model) {
 		
     	sessionTypeService.removeSessionType(id);
-		return "redirect:/sessiontypes/";
+		return "redirect:/admin/sessiontypes/";
 	}
 
     
@@ -62,7 +62,7 @@ public class SessionTypeController {
     	sessionTypeService.addSessionType(sessionType);
  //   	sessionTypeService.updateSessionType(sessionType);
     	
-		return "redirect:/sessiontypes/";
+		return "redirect:/admin/sessiontypes/";
 	}
     
 }

@@ -23,7 +23,7 @@ import com.team1.cinemaGo.service.MovieSessionService;
 import com.team1.cinemaGo.service.SessionTypeService;
 
 @Controller
-@RequestMapping(value="/moviesessions")
+@RequestMapping(value="admin/moviesessions")
 public class MovieSessionController {
 
 	
@@ -100,13 +100,22 @@ public class MovieSessionController {
     public String removeMovieSession(@PathVariable long id, Model model) {
 		
     	movieSessionService.removeMovieSession(id);
-		return "redirect:/moviesessions/";
+		return "redirect:/admin/moviesessions/";
 	}
 
     
     @RequestMapping(value="/save", method=RequestMethod.POST)
     public String setMovieSession(@ModelAttribute("movieSession") MovieSession movieSession, BindingResult result, Model model) {
 		
+
+    	List<Movie> movies = movieService.listMovie();
+    	List<Cinema> cinemas = cinemaService.listCinemas();
+    	List<SessionType> sessionTypes = sessionTypeService.listSessionType();
+    	
+    	model.addAttribute("movies", movies);
+    	model.addAttribute("cinemas", cinemas);
+    	model.addAttribute("sessionTypes", sessionTypes);
+    	
     	
     	movieSession.setMovie(movieService.getMovieById(Long.parseLong(movieSession.getMovie().getMovieTitle())));
     	movieSession.setCinema(cinemaService.getCinemaById(Integer.parseInt(movieSession.getCinema().getCinemaName())));
@@ -114,7 +123,8 @@ public class MovieSessionController {
     	
  
     	try {
-			movieSessionService.addMovieSession(movieSession);
+//			movieSessionService.addMovieSession(movieSession);
+			movieSessionService.updateMovieSession(movieSession);
 		} catch (IOException e) {
 			model.addAttribute("error", e.getMessage());
 		}

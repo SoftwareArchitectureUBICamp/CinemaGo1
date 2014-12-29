@@ -24,14 +24,14 @@ public class CinemaDAOImpl implements CinemaDAO {
 	@Override
 	public void addCinema(Cinema cinema) {
 		Session session = this.sessionFactory.getCurrentSession();
-	    session.persist(cinema);
+	    session.saveOrUpdate(cinema);
 //	    logger.info("Cinema saved successfully, Cinema Details="+cinema);
 	}
 
 	@Override
 	public void updateCinema(Cinema cinema) {
 		Session session = this.sessionFactory.getCurrentSession();
-	    session.update(cinema);
+	    session.saveOrUpdate(cinema);
 //	    logger.info("Cinema updated successfully, Cinema Details="+cinema);
 	}
 
@@ -39,7 +39,7 @@ public class CinemaDAOImpl implements CinemaDAO {
 	public List<Cinema> listCinema() {
         Session session = this.sessionFactory.getCurrentSession();
         @SuppressWarnings("unchecked")
-        List<Cinema> cinemasList = session.createQuery("from Cinema").list();
+        List<Cinema> cinemasList = session.createQuery("from Cinema ORDER BY cinemaName").list();
 //        for(Cinema cinema : cinemasList){
 //            logger.info("Cinemas List::"+cinema);
 //        }
