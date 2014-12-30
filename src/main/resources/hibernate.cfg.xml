@@ -19,8 +19,12 @@
         <property name="show_sql">true</property>
 
 
-
+       <mapping class="com.team1.cinemaGo.model.SessionType"/>
        <mapping class="com.team1.cinemaGo.model.Cinema"/>
+       <mapping class="com.team1.cinemaGo.model.Movie"/>
+       <mapping class="com.team1.cinemaGo.model.MovieSession"/>
+       <mapping class="com.team1.cinemaGo.model.Seat"/>
+       
 
     </session-factory>
 </hibernate-configuration>

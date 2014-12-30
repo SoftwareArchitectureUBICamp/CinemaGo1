@@ -50,4 +50,5 @@ public class DataController {
 		return "admin";
 	
 	}
+	
 }
