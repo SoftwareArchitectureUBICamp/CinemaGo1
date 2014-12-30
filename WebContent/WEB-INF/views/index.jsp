@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>List Of Session types</title>
+<title>CinemaGO movies</title>
 
 <link rel="stylesheet" href='<c:url value="/resources/css/normalize.min.css"/>'>
 <link rel="stylesheet" href='<c:url value="/resources/css/main.css"/>'>
@@ -14,77 +14,109 @@
        text-align: left
   }
   
-  img {
-  	max-height:300px;
-  }
-
 </style>
 </head>
 
 <body>
-   <div style="width: 95%; margin: 0 auto;">
+   <div style="margin: 0 auto; text-align:center;">
    
-        <h1>List Of Current Movie Sessions</h1>
-
-         <br>
-         <h3>Movies Today</h3>
-         
-         <div>
-         	
-         </div>
-         
-         <table class="pure-table pure-table-bordered pure-table-striped">
-            <tbody>
+         <div style="width:100%; background-color: lightcoral; display: inline-block;">
+         <h2 style="padding: 50 0;color: seashell;text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);font-size: 3em;font-weight: lighter;">
+         	Movies Today
+         </h2>
+         <div style="display:inline-block; padding-bottom:50px; width:90%;">
                <c:forEach items="${movieSessionsToday}" var="movieSession" varStatus="loopCounter">
-               <tr>
-                   <td><img src='<c:out value="${movieSession.movie.imgUrl}" />'/></td>
-                   <td><c:out value="${movieSession.startTime.toLocalDate().toString()}" /></td>
-                   <td><c:out value="${movieSession.startTime.toLocalTime().toString()}" /></td>
-                   <td><c:out value="${movieSession.movie.movieTitle}" /></td>
-                   <td><c:out value="${movieSession.cinema.cinemaName}" /></td>
-                   <td><c:out value="${movieSession.sessionType.sessionName}" /></td>
-                   <td><c:out value="${movieSession.sessionType.sessionPrice}" /></td>
- 
-                </tr>
-                </c:forEach>
-            </tbody>
-         </table>
+               
+               <div style="float: left; width:300px; height:480px; max-height:500px; padding:10px; background-color:linen; text-align:center; margin:10px; -webkit-box-shadow: 0px 0px 9px 0px rgba(50, 50, 50, 0.92);"> 
+               		<div style="width:100%; float:left; border-bottom: solid 1px burlywood;"><h3 style="margin:0;">
+               			<span style="float:left; text-align:left; width:100%;">
+               				<span><c:out value="${movieSession.startTime.toLocalTime().toString()}" /></span>
+               				<span style="font-weight: lighter; font-size: 0.8em;"> on </span> 
+               				<span style="font-weight: lighter; font-size: 0.8em;"><c:out value="${movieSession.cinema.cinemaName}" /></span>
+               				<span style="float:right; font-weight: normal; font-size: 0.8em;"><c:out value="${movieSession.movie.duration}" /> min.</span>
+               			</span> 	
+               		</h3></div>
+               		<div style="width:100%; padding-top:15px;"><h2 style="text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);">
+               			<c:out value="${movieSession.movie.movieTitle}" />
+               		</h2></div>
+               		<img style="max-height:300px;" src='<c:out value="${movieSession.movie.imgUrl}" />'/>
+               		<p style="font-size:0.7em;"><c:out value="${movieSession.movie.description}" /></p>
+               		
+               		<div style="width:100%; border-top: solid 1px burlywood; padding-top: 5px;">
+               			<span style="padding-right:10px;"><c:out value="${movieSession.sessionType.sessionPrice}" /> &#8364</span>
+               			<button>Buy</button>
+               		</div>
+               </div>
+               
+               </c:forEach>
+               <div class="clearfix"></div>
+			</div>
+			
+		</div>
 		
-		<h3>Movies Tomorrow</h3>
-        <table class="pure-table pure-table-bordered pure-table-striped">
-            <tbody>
+		<div style="width:100%; background-color: lightsteelblue; display: inline-block;">
+		<h2 style="padding: 50 0;color: seashell;text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);font-size: 3em;font-weight: lighter;">
+			Movies Tomorrow
+		</h2>
+		<div style="display:inline-block; padding-bottom:50px; width:90%;">
                <c:forEach items="${movieSessionsTomorrow}" var="movieSession" varStatus="loopCounter">
-               <tr>
-                   <td><img src='<c:out value="${movieSession.movie.imgUrl}" />'/></td>
-                   <td><c:out value="${movieSession.startTime.toLocalDate().toString()}" /></td>
-                   <td><c:out value="${movieSession.startTime.toLocalTime().toString()}" /></td>
-                   <td><c:out value="${movieSession.movie.movieTitle}" /></td>
-                   <td><c:out value="${movieSession.cinema.cinemaName}" /></td>
-                   <td><c:out value="${movieSession.sessionType.sessionName}" /></td>
-                   <td><c:out value="${movieSession.sessionType.sessionPrice}" /></td>
- 
-                </tr>
+              
+               <div style="float: left; width:300px; height:480px; max-height:500px; padding:10px; background-color:linen; text-align:center; margin:10px; -webkit-box-shadow: 0px 0px 9px 0px rgba(50, 50, 50, 0.92);"> 
+               		<div style="width:100%; float:left; border-bottom: solid 1px burlywood;"><h3 style="margin:0;">
+               			<span style="float:left;  text-align:left; width:100%;">
+               				<span><c:out value="${movieSession.startTime.toLocalTime().toString()}" /></span>
+               				<span style="font-weight: lighter; font-size: 0.8em;"> on </span> 
+               				<span style="font-weight: lighter; font-size: 0.8em;"><c:out value="${movieSession.cinema.cinemaName}" /></span>
+               				<span style="float:right; font-weight: normal; font-size: 0.8em;"><c:out value="${movieSession.movie.duration}" /> min.</span>
+               			</span> 	
+               		</h3></div>
+               		<div style="width:100%; padding-top:15px;"><h2 style="text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);">
+               			<c:out value="${movieSession.movie.movieTitle}" />
+               		</h2></div>
+               		<img style="max-height:300px;" src='<c:out value="${movieSession.movie.imgUrl}" />'/>
+               		<p style="font-size:0.7em;"><c:out value="${movieSession.movie.description}" /></p>
+               		
+               		<div style="width:100%; border-top: solid 1px burlywood; padding-top: 5px;">
+               			<span style="padding-right:10px;"><c:out value="${movieSession.sessionType.sessionPrice}" /> &#8364  </span>
+               			<button>Buy</button>
+               		</div>
+               </div>
+               
                 </c:forEach>
-            </tbody>
-         </table>
-
-		<h3>Rest Movie Sessions</h3>
-        <table class="pure-table pure-table-bordered pure-table-striped">
-            <tbody>
+			</div>
+		</div>
+		
+		<div class="clearfix"></div>
+		<div style="width:100%; background-color: lightsalmon; display: inline-block;">
+		<h2 style="padding: 50 0;color: seashell;text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);font-size: 3em;font-weight: lighter;">
+			Rest of the Movie Sessions
+		</h2>
+		<div style="display:inline-block; padding-bottom:50px; width:90%;">
                <c:forEach items="${movieSessions}" var="movieSession" varStatus="loopCounter">
-               <tr>
-                   <td><img src='<c:out value="${movieSession.movie.imgUrl}" />'/></td>
-                   <td><c:out value="${movieSession.startTime.toLocalDate().toString()}" /></td>
-                   <td><c:out value="${movieSession.startTime.toLocalTime().toString()}" /></td>
-                   <td><c:out value="${movieSession.movie.movieTitle}" /></td>
-                   <td><c:out value="${movieSession.cinema.cinemaName}" /></td>
-                   <td><c:out value="${movieSession.sessionType.sessionName}" /></td>
-                   <td><c:out value="${movieSession.sessionType.sessionPrice}" /></td>
- 
-                </tr>
+	               <div style="float: left; width:300px; height:480px; max-height:500px; padding:10px; background-color:linen; text-align:center; margin:10px; -webkit-box-shadow: 0px 0px 9px 0px rgba(50, 50, 50, 0.92);"> 
+	               		<div style="width:100%; float:left; border-bottom: solid 1px burlywood;"><h3 style="margin:0;">
+	               			<span style="float:left;  text-align:left; width:100%;">
+	               				<span style="font-weight: lighter; font-size: 0.8em;"><c:out value="${movieSession.startTime.toLocalDate().toString()}" /></span>
+	               				<span><c:out value="${movieSession.startTime.toLocalTime().toString()}" /></span>
+	               				<span style="font-weight: lighter; font-size: 0.8em;"> on </span> 
+	               				<span style="font-weight: lighter; font-size: 0.8em;"><c:out value="${movieSession.cinema.cinemaName}" /></span>
+	               				<span style="float:right; font-weight: normal; font-size: 0.8em;"><c:out value="${movieSession.movie.duration}" /> min.</span>
+	               			</span> 	
+	               		</h3></div>
+	               		<div style="width:100%; padding-top:15px;"><h2 style="text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);">
+	               			<c:out value="${movieSession.movie.movieTitle}" />
+	               		</h2></div>
+	               		<img style="max-height:300px;" src='<c:out value="${movieSession.movie.imgUrl}" />'/>
+	               		<p style="font-size:0.7em;"><c:out value="${movieSession.movie.description}" /></p>
+	               		
+	               		<div style="width:100%; border-top: solid 1px burlywood; padding-top: 5px;">
+	               			<span style="padding-right:10px;"><c:out value="${movieSession.sessionType.sessionPrice}" /> &#8364  </span>
+	               			<button>Buy</button>
+	               		</div>
+	               </div>
                 </c:forEach>
-            </tbody>
-         </table>
+            </div>
+		</div>
      </div>
 
      <!--  It is advised to put the <script> tags at the end of the document body so that they don't block rendering of the page -->
