@@ -112,6 +112,7 @@ public class MovieSessionServiceImpl implements MovieSessionService {
 		List<MovieSession> filteredSessions = new ArrayList<MovieSession>();
 		
 		filteredSessions = allSessions.stream().filter(s -> s.getStartTime().toLocalDate().isAfter(fromDate.minusDays(1).toLocalDate())
+														 && s.getStartTime().isAfter(LocalDateTime.now())
 														 && s.getStartTime().toLocalDate().isBefore(toDate.plusDays(1).toLocalDate())).collect(Collectors.toList());
 		return filteredSessions;
 		
